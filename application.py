@@ -9,13 +9,13 @@ socketio = SocketIO(app)
 @socketio.on('connect')
 def user_has_connected():
     print('a user connected')
-    emit('response1', broadcast=True)
+    emit('event1')
 
 # Print message when client disconnects
 @socketio.on('disconnect')
 def user_has_disconnected():
     print('a user disconnected')
-    emit('response2', broadcast=True)
+    emit('event2')
 
 # Run gevent web server
 if __name__ == '__main__':
