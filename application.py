@@ -15,7 +15,7 @@ def user_has_connected():
 @socketio.on('disconnect')
 def user_has_disconnected():
     print('a user disconnected')
-    emit('response2', breadcast=True)
+    emit('response2', broadcast=True)
 
 # Run gevent web server
 if __name__ == '__main__':
