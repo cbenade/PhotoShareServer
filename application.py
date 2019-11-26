@@ -1,3 +1,4 @@
+from os import environ
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send, emit, Namespace
 from time import sleep
@@ -21,4 +22,5 @@ def user_has_disconnected():
 
 # Run gevent web server
 if __name__ == '__main__':
-    socketio.run(app)
+    # socketio.run(app)
+    socketio.run(environ.get('PORT'))
