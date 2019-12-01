@@ -24,10 +24,11 @@ def userHasDisconnected():
 @socketio.on('clientMessage')
 def received_client_message(message):
     print('received client message: ' + message)
-    response = message + "123"
-    emit_server_message(response)
-def emit_server_message(response):
-    emit("serverMessage", response, broadcast=True)
+    # response = message + "123"
+    namespace = message
+    emit_server_message(namespace)
+def emit_server_message(namespace):
+    emit("serverMessage", namespace, namespace=namespace)
 
 # Run gevent web server
 if __name__ == '__main__':
