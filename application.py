@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-from flask_socketio import SocketIO, send, emit, Namespace
+from flask import Flask
+from flask_socketio import SocketIO, emit, Namespace
 
 # Create flask and socketio objects
 app = Flask(__name__)
@@ -28,8 +28,6 @@ def received_phone_message(message):
     emit_server_message(response_message)
 def emit_server_message(response_message):
     emit("servermessage", response_message, broadcast=True)
-
-
 
 # Run gevent web server
 if __name__ == '__main__':
