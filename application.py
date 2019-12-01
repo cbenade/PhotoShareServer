@@ -21,13 +21,13 @@ def user_has_disconnected():
 def userHasDisconnected():
     emit('aUserHasDisconnected', broadcast=True)
 
-@socketio.on('phonemessage')
-def received_phone_message(message):
-    print('received phone message: ' + message)
-    response_message = message + "123"
-    emit_server_message(response_message)
-def emit_server_message(response_message):
-    emit("servermessage", response_message, broadcast=True)
+@socketio.on('clientMessage')
+def received_client_message(message):
+    print('received client message: ' + message)
+    response = message + "123"
+    emit_server_message(response)
+def emit_server_message(response):
+    emit("serverMessage", response, broadcast=True)
 
 # Run gevent web server
 if __name__ == '__main__':
