@@ -21,6 +21,7 @@ def user_has_disconnected():
 def userHasDisconnected():
     emit('aUserHasDisconnected', broadcast=True)
 
+# Broadcast image upload notification to connected devices
 @socketio.on('uploadNotification')
 def notified_image_uploaded():
     print('received client notification')
