@@ -20,13 +20,13 @@ def user_has_disconnected():
 # Place client in room
 @socketio.on('join')
 def on_join(room):
-    print("user joined room '{room}'")
+    print(f"user joined room '{room}'")
     join_room(room)
 
 # Remove client from room
 @socketio.on('leave')
 def on_leave(room):
-    print("user left room '{room}'")
+    print(f"user left room '{room}'")
     leave_room(room)
 
 # Broadcast upload notification to devices connected in room
