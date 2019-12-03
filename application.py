@@ -8,12 +8,8 @@ socketio = SocketIO(app)
 # Print message when client connects
 @socketio.on('connect')
 def user_has_connected():
-    print('a user connected to room')
+    print('a user connected')
     emit('aUserHasConnected', broadcast=True)
-
-#     userHasConnected()
-# def userHasConnected():
-#     emit('aUserHasConnected', broadcast=True)
 
 # Print message when client disconnects
 @socketio.on('disconnect')
@@ -21,19 +17,23 @@ def user_has_disconnected():
     print('a user disconnected')
     emit('aUserHasDisconnected', broadcast=True)
 
-#     userHasDisconnected()
-# def userHasDisconnected():
-#     emit('aUserHasDisconnected', broadcast=True)
+# Place client in room
+@socketio.on('join')
+def on_join(room):
+    print("user joined room '{room}'")
+    join_room(room)
 
-# Broadcast image upload notification to connected devices
+# Remove client from room
+@socketio.on('leave')
+def on_leave(room):
+    print("user left room '{room}'")
+    leave_room(room)
+
+# Broadcast upload notification to devices connected in room
 @socketio.on('uploadNotification')
-def notified_image_uploaded():
+def notified_image_uploaded(room):
     print('received client notification')
-    emit("imageUploaded", broadcast=True)
-
-#     broadcast_image_uploaded()
-# def broadcast_image_uploaded():
-#     emit("imageUploaded", broadcast=True)
+    emit("imageUploaded", room=room)
 
 # Run gevent web server
 if __name__ == '__main__':
