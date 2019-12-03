@@ -7,8 +7,8 @@ socketio = SocketIO(app)
 
 # Print message when client connects
 @socketio.on('connect')
-def user_has_connected(groupName):
-    print('a user connected to room: {groupName}')
+def user_has_connected():
+    print('a user connected to room')
     emit('aUserHasConnected', broadcast=True)
 
 #     userHasConnected()
