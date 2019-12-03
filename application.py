@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, Namespace
 
 # Create flask and socketio objects
 app = Flask(__name__)
