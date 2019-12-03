@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_socketio import SocketIO, emit, Namespace
+from flask_socketio import SocketIO, emit, join_room, leave_room
 
 # Create flask and socketio objects
 app = Flask(__name__)
@@ -7,8 +7,8 @@ socketio = SocketIO(app)
 
 # Print message when client connects
 @socketio.on('connect')
-def user_has_connected():
-    print('a user connected')
+def user_has_connected(groupName):
+    print('a user connected to room: {groupName}')
     emit('aUserHasConnected', broadcast=True)
 
 #     userHasConnected()
