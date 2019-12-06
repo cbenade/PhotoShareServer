@@ -35,6 +35,6 @@ def notified_image_uploaded(room):
     print('received client notification')
     emit("imageUploaded", room=room)
 
-# Run gevent web server
+# Run eventlet web server
 if __name__ == '__main__':
     socketio.run(app)
